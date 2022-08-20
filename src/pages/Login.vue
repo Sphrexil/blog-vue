@@ -159,6 +159,10 @@ import {setToken} from '../utils/auth.js'
                 userLogin(this.username,this.password).then((response)=>{
                     // 登录成功记录token和用户信息，登录失败给对应提示
                     setToken(response.token)
+                  this.$message({
+                    type: 'success',
+                    message: '登录成功!'
+                  });
                     // 存储用户信息
                     localStorage.setItem("userInfo",JSON.stringify(response.userInfo))
                     if(localStorage.getItem('logUrl')){

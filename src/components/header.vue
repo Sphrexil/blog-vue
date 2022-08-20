@@ -20,7 +20,8 @@
 								<a href="javascript:void(0);" @click="logoinFun(1)">登录&nbsp;</a>|<a href="javascript:void(0);" @click="logoinFun(0)">&nbsp;注册</a>
 							</div>
 							<div v-show="haslogin" class="haslogin">
-								<i class="fa fa-fw fa-user-circle userImg"></i>
+                <img :src="userInfo.avatar" style=" width: 38px;height: 38px;border-radius:50%" >
+<!--                <i class="el-icon-edit"></i>-->
 								<ul class="haslogin-info">
 									<li>
 										<a href="#/UserInfo">个人中心</a>
@@ -127,16 +128,21 @@ export default {
 					removeToken()
 					localStorage.removeItem('userInfo');
 					that.haslogin = false;
-					window.location.reload();
+
+
+
 						that.$message({
 							type: 'success',
 							message: '退出成功!'
 						});
+
 					if (that.$route.path == '/UserInfo') {
+            console.log("test")
 						that.$router.push({
 							path: '/'
 						});
 					}
+
 				})
 			}).catch(() => {
 				//
